@@ -22,6 +22,6 @@ Bu klasor, GitHub Pages veya benzeri bir statik hosting uzerine yuklenebilecek h
 
 ## Yayin oncesi kontrol
 
-- Resmi destek e-postasi veya iletisim kanali ekle.
+ - Resmi destek e-postasi olarak `memodee333@gmail.com` bilgisini koru veya gerekiyorsa guncelle.
 - Gerekirse veri sorumlusu kimligini acik yaz.
 - Hukuki metinleri bir uzmanla son kez gozden gecir.
