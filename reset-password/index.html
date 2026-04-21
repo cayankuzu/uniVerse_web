@@ -1,0 +1,136 @@
+<!doctype html>
+<html lang="tr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>UniVerse Sifre Yenileme</title>
+  <style>
+    :root {
+      --ink: #0f172a;
+      --muted: #64748b;
+      --line: rgba(15, 23, 42, 0.1);
+      --blue: #2563eb;
+      --amber: #f59e0b;
+      --paper: rgba(255, 255, 255, 0.84);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      min-height: 100vh;
+      margin: 0;
+      display: grid;
+      place-items: center;
+      background:
+        radial-gradient(circle at 20% 16%, rgba(37, 99, 235, 0.24), transparent 32rem),
+        radial-gradient(circle at 84% 22%, rgba(245, 158, 11, 0.22), transparent 28rem),
+        linear-gradient(145deg, #f8fbff 0%, #fff7ed 100%);
+      color: var(--ink);
+      font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    }
+
+    .card {
+      width: min(92vw, 440px);
+      padding: 28px;
+      border: 1px solid var(--line);
+      border-radius: 32px;
+      background: var(--paper);
+      box-shadow: 0 24px 90px rgba(15, 23, 42, 0.16);
+      backdrop-filter: blur(22px);
+      text-align: center;
+    }
+
+    .badge {
+      width: 92px;
+      height: 92px;
+      margin: 0 auto 20px;
+      display: grid;
+      place-items: center;
+      border-radius: 28px;
+      background: linear-gradient(135deg, var(--blue), var(--amber));
+      box-shadow: 0 18px 42px rgba(37, 99, 235, 0.26);
+      color: white;
+      font-size: 40px;
+    }
+
+    h1 {
+      margin: 0;
+      font-size: clamp(28px, 7vw, 38px);
+      letter-spacing: -0.04em;
+      line-height: 1.04;
+    }
+
+    p {
+      margin: 12px auto 0;
+      max-width: 34ch;
+      color: var(--muted);
+      font-size: 15px;
+      line-height: 1.65;
+    }
+
+    button,
+    a {
+      width: 100%;
+      min-height: 52px;
+      margin-top: 22px;
+      border: 0;
+      border-radius: 18px;
+      display: inline-grid;
+      place-items: center;
+      cursor: pointer;
+      background: linear-gradient(135deg, var(--ink), #1e3a8a);
+      color: white;
+      box-shadow: 0 16px 34px rgba(15, 23, 42, 0.2);
+      font: inherit;
+      font-weight: 800;
+      text-decoration: none;
+    }
+
+    .hint {
+      margin-top: 16px;
+      color: #94a3b8;
+      font-size: 12px;
+    }
+  </style>
+</head>
+<body>
+  <main class="card" data-target="reset-password" data-flow="password-reset">
+    <div class="badge" aria-hidden="true">↗</div>
+    <h1>Sifre yenilemeye devam et</h1>
+    <p>Guvenli sifre yenileme ekranini uygulamada aciyoruz. Otomatik acilmazsa butona dokun.</p>
+    <button id="open-app" type="button">Uygulamayi Ac</button>
+    <div class="hint">Baglanti sadece kisa sure gecerlidir.</div>
+  </main>
+  <script>
+    (function () {
+      var scheme = "ogrencisosyalagi";
+      var card = document.querySelector("[data-target]");
+      var target = card.getAttribute("data-target") || "reset-password";
+      var flow = card.getAttribute("data-flow") || "password-reset";
+
+      function mergeParams() {
+        var params = new URLSearchParams(window.location.search);
+        var hash = String(window.location.hash || "").replace(/^#/, "");
+        if (hash) {
+          var hashParams = new URLSearchParams(hash);
+          hashParams.forEach(function (value, key) {
+            if (!params.has(key)) params.set(key, value);
+          });
+        }
+        if (!params.has("flow")) params.set("flow", flow);
+        return params.toString();
+      }
+
+      function openApp() {
+        var query = mergeParams();
+        window.location.href = scheme + "://" + target + (query ? "?" + query : "");
+      }
+
+      document.getElementById("open-app").addEventListener("click", openApp);
+      window.setTimeout(openApp, 650);
+    })();
+  </script>
+</body>
+</html>
