@@ -5,6 +5,7 @@ Bu klasor, GitHub Pages veya benzeri bir statik hosting uzerine yuklenebilecek h
 ## Dosyalar
 
 - `index.html`: tanitim ve guven odakli ana sayfa
+- `download/index.html`: iOS ve Android indirme hedef sayfasi
 - `gizlilik.html`: gizlilik politikasi
 - `kvkk.html`: KVKK aydinlatma metni
 - `cocuk-guvenligi.html`: cocuk guvenligi sayfasi
